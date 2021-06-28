@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+{% block app %}
+
+    <h1>ユーザの詳細情報です。</h1>
+    <!-- テーブル -->
+    <table>
+        <tbody>
+            <tr>
+                <!-- 5列分ユーザ情報を出力 -->
+                <td>
+                    名前：{{userinfoDetail.userName}}   <br>
+                    出身国：{{userinfoDetail.country}}  <br>
+                    住所：{{userinfoDetail.address}}    <br>
+                    性別：{{userinfoDetail.sex}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+ 
+    <a href="{% url 'showUsers' %}">ユーザ一覧へ</a>
+ 
+    {% endblock %}

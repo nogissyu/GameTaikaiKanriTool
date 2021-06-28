@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <!-- Bootstrap読込み -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- Bootstrap読込み -->
+        
+        <!-- 表示全体を中央に揃える -->
+        <style>body {padding-top: 50px;}</style>
+ 
+        <!-- ナビゲーションバー -->
+        <nav class="navbar navbar-light bg-light fixed-top">
+            <a class='navbar-brand' href='{% url "showUsers" %}'>ミニPBL</a>
+        </nav>
+    </head>
+ 
+    <!-- ボディー -->
+    <body>
+        <div class='container'>
+            {% block app %}
+            {% endblock %}
+        </div>
+    </body>
+ 
+ 
+</html>

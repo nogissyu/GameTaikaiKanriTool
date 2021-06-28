@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+ 
+{% block app %}
+    <h1>ユーザ登録</h1>
+ 
+    <form action='{% url "addUser" %}' method='post' class='form'>
+        <!-- ユーザー登録フォームを表示 -->
+        {% csrf_token %}
+        {% bootstrap_form userForm %}
+        <button type='submit' class='btn btn-outline-primary'>登録</button>
+        <a href='{% url "showCreateUserForm" %}' class='btn btn-outline-secondary'>戻る</a>
+    </form>
+{% endblock %}

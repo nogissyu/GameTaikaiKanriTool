@@ -1,0 +1,25 @@
+{% extends './base.html' %}
+{% block app %}
+ 
+    <h1>ようこそ！</h1>
+    <!-- テーブル -->
+    <table class="table table-striped table table-bordered ">
+        <thead>
+            <tr>
+                <th colspan="2">{{msg}}:{{count}}名</th>
+            </tr>
+        </thead>
+        <tbody align="center">
+            <!-- count件(行)数分をループ -->
+            {% for user in userinfo %}
+            <tr>
+                <!-- 4列分ユーザ情報を出力 -->
+                <td>{{user.userName}}</td>
+                <td><a href="{% url 'showDetail' user.userName %}" class="btn btn-outline-primary">詳細</a> </td>
+            </tr>
+            {% endfor %}
+            <a href='{% url "showCreateUserForm" %}' class='btn btn-secondary active'>ユーザ登録</a>
+        </tbody>
+    </table>
+    
+{% endblock %}
