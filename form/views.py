@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from .models import UserInfo
-from .forms import UserForm
+from .models import battledata
+from .forms import UserForm,dataForm
 # ユーザ情報を辞書に格納して、users.htmlに返す
 def showUsers(request):
     usefinfo = UserInfo.objects.all()
@@ -79,3 +80,33 @@ def updateUser(request,user):
     }
     #detail.htmlへデータを渡す
     return render(request, 'form/users.html',context)
+
+def syouhaiForm(request):
+    battleData = battledata.objects.all()
+    context = {
+        'battledata' : battleData,
+    }
+    return render(request, 'form/syouhaikai.html',context)
+
+def syouriData(request,Id):
+    if request.method == 'POST':
+        Battledata = get_object_or_404(battledata,battleID=Id)
+        if Battledata.winner != "none":
+            context = {
+                'battledata' : Battledata,
+                }
+            return render(request,'form/error.html',context)
+        elif 'button1' in request.POST:
+            Battledata.winner = Battledata.userID1
+            Battledata.save()
+            index="勝利"
+        elif 'button2' in request.POST:
+            Battledata.winner = Battledata.userID2
+            Battledata.save()
+            index="敗北"
+
+    context = {
+        'battledata' : Battledata,
+        'index' : index,
+    }
+    return render(request, 'form/syouhaikekka.html',context)

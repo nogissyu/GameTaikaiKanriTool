@@ -8,4 +8,6 @@ urlpatterns = [
     path('add/',views.addUsers,name='addUser'),
     path('<str:user>/update/', views.updateUser, name='updateUser'),
     path('<str:user>/edit/', views.showEditUserForm, name='showEditUserForm'),
+    path('syouhai/',views.syouhaiForm,name='syouhai'),
+    path('<str:Id>/win/',views.syouriData,name='syouriData'),
 ]

@@ -1,4 +1,6 @@
-<html>
+{% load static %}
+<!doctype html>
+<html lang="ja">
     <head>
         <!-- Bootstrap読込み -->
         <meta charset="utf-8">
@@ -23,6 +25,9 @@
             {% endblock %}
         </div>
     </body>
- 
+    <script src="{% static 'form/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'form/js/bootstrap.bundle.min.js' %}"></script>
+    
+    {% block extra_js %}{% endblock %}
  
 </html>

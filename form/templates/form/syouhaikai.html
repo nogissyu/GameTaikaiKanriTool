@@ -1,0 +1,62 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block app %}
+
+<div style="text-align: center">
+<div class="container bg-light">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">&emsp; &thinsp;対戦カード一覧
+            <img src="{% static 'form/card.jpg' %}" width="100" height="65">
+        </h1>
+        <p class="lead">勝者が決まり次第ボタンを押して報告してください</p>
+    </div>
+      </div>
+    {% for data in battledata %}
+        <h1 class="my-3 h3">{{forloop.counter}}試合目: <b>{{data.userID1}}</b>さん　VS　<b>{{data.userID2}}</b>さん
+        <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#{{data.battleID}}">
+            勝敗を決定する
+            {% if data.winner != "none" %}
+                <span class="badge badge-light">完了</span>
+            {% endif %}
+            </button>
+        </h1>
+        <div class="modal fade" id="{{data.battleID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">勝者をしっかりと確認してください！</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <h2>{{data.userID1}}</h2>さんは...
+                </div>
+                <div class="modal-footer">
+                    <form action='{% url "syouriData" data.battleID %}' method='post' class='form'>
+                        <!-- ユーザー編集フォームを表示 -->
+                        {% csrf_token %}
+                        <button type='submit' name='button1' class='btn btn-outline-primary'>勝利</button>
+                        <button type='submit' name='button2' class='btn btn-outline-primary'>敗北</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+        <footer class="fixed-bottom">           
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container">
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+            <a class="nav-link active" href="{% url "showUsers" %}">ホーム <span class="sr-only">(現位置)</span></a>
+          </div>
+        </div>
+      </nav>
+    </div>
+</footer>
+{% endblock %}

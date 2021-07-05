@@ -1,5 +1,5 @@
 from django import forms
-from . models import UserInfo
+from . models import UserInfo, battledata
  
 class UserForm(forms.ModelForm):
     class Meta:
@@ -10,4 +10,15 @@ class UserForm(forms.ModelForm):
            'country':'出身国',
            'sex':'性別',
            'address':'住所',
+           }
+
+class dataForm(forms.ModelForm):
+    class Meta:
+        model = battledata
+        fields = ('battleID','userID1','userID2','winner')
+        labels={
+           'battleID':'1',
+           'userID1':'出身国',
+           'userID2':'性別',
+           'winner':'0',
            }

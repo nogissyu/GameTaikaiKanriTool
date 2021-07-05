@@ -1,0 +1,16 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+
+{% block app %}
+<div class="container">
+    <div class="alert alert-info" role="alert">
+    <h2>Sorry...</h2>
+    <h1>勝敗は既に決まっています. <b>{{battledata.winner}}さん</b>の勝利</h1>
+</div>
+</div>
+    {% load static %}
+    <img src="{% static 'form/lose.jpg' %}" width="1000" height="816">
+
+    
+    
+{% endblock %}

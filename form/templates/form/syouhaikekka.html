@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+ 
+{% block app %}
+<h1>{{battledata.userID1}}さんは{{battledata.userID2}}さんに</h1>
+<!-- テーブル -->
+    <tbody align="center">
+        <!-- count件(行)数分をループ -->
+        <tr>
+            <h1>{{index}}しました！</h1>
+            </form>
+        </tr>
+    </tbody>
+    <a href="{% url 'syouhai'%}" class="btn btn-outline-primary">戻る</a>
+    <footer class="fixed-bottom">           
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+    <a class="nav-link active" href="{% url "showUsers" %}">ホーム <span class="sr-only">(現位置)</span></a>
+  </div>
+</div>
+</nav>
+</div>
+</footer>
+
+{% endblock %}

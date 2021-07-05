@@ -6,3 +6,9 @@ class UserInfo(models.Model):
     country = models.CharField(max_length=50, null=True)
     sex = models.CharField(max_length=200, null=True)
     address = models.CharField(max_length=200, null=True)
+
+class battledata(models.Model):
+    battleID = models.CharField(max_length=50)
+    userID1 = models.CharField(max_length=50)
+    userID2 = models.CharField(max_length=50)
+    winner = models.CharField(max_length=50)
