@@ -3,6 +3,7 @@
 {% load static %}
 {% block app %}
 
+{% block contant %}
 <div style="text-align: center">
 <div class="container bg-light">
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -46,6 +47,7 @@
             </div>
         </div>
     {% endfor %}
+    <a href='{% url "winner" %}' class='btn btn-outline-secondary'>優勝者</a>
 
 </div>
         <footer class="fixed-bottom">           
@@ -59,4 +61,5 @@
       </nav>
     </div>
 </footer>
+{% endblock %}
 {% endblock %}

@@ -7,6 +7,11 @@ class UserInfo(models.Model):
     sex = models.CharField(max_length=200, null=True)
     address = models.CharField(max_length=200, null=True)
 
+class Entry(models.Model):
+    userID = models.CharField(max_length=20)
+    username = models.CharField(max_length=20)
+    password = models.CharField(max_length=20)
+
 class battledata(models.Model):
     battleID = models.CharField(max_length=50)
     userID1 = models.CharField(max_length=50)

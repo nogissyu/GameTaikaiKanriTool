@@ -1,0 +1,34 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block app %}
+
+{% block contant %}
+<html>
+<body>
+  <div style="text-align: center">
+  <h1 class="display-4 style=center">&emsp; &thinsp;対戦表
+</h1>
+</div>
+ <table class="table table-striped table-dark">
+    <tr align="center">
+      <th> </th>
+      {% for key,value in contxt.items %}
+
+      <th>{{key}}</th>
+      {% endfor %}
+    </tr>
+    {% for key,value in contxt.items %}
+     <tr align="center">
+       <td>{{key}}</td>
+       {% for score in value %}
+          <td><b>{{score}}</b></td>
+       {% endfor %}
+     
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
+{% endblock %}
+{% endblock %}

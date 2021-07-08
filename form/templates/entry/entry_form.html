@@ -1,0 +1,42 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+
+{% block app %}
+<div class='a1'>
+    <h1>エントリーページ</h1>
+</div>
+
+<div class ='b1'>
+    <p>{{entrytext}}</p>
+</div>
+
+<form action="{% url 'entry_list' %}" method="post" class="form">
+    {% csrf_token %}
+
+    {% bootstrap_form plaierForm %}
+    <!--
+    <div class="form-group">
+        <label for="userID1">ユーザーID</label>
+        <input type="text" class="form-control" id="userID1" aria-describedby="IDHelp" placeholder="exam@mail.com"　name="userIDtext1">
+        <small id="IDHelp" class="form-text text-muted">ご登録の使用したメールアドレスを入力してください</small>
+    </div>
+    <div class="form-group">
+        <label for="username1">ユーザーネーム</label>
+        <input type="text" class="form-control" id="username1" aria-describedby="nameHelp" placeholder="username"　name="usernametext1">
+        <small id="nameHelp" class="form-text text-muted">大会で使用するユーザーネームを入力してください</small>
+    </div>
+    <div class="form-group">
+        <label for="password1">Password</label>
+        <input type="password" class="form-control" id="password1" placeholder="Password" name="password1">
+    </div>
+    -->
+    <div class="form-group">
+        <label for="password1">Password</label>
+        <input type="password" class="form-control" id="password1" placeholder="Password" name="password1">
+    </div>
+    <button type="submit" class="btn btn-primary">エントリー</button>
+
+
+</form>
+<a href='{% url "entry_list" %}' class='btn btn-secondary active'>エントリー一覧へ</a>
+{% endblock %}

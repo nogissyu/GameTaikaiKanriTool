@@ -1,5 +1,5 @@
 from django import forms
-from . models import UserInfo, battledata
+from . models import UserInfo, battledata, Entry
  
 class UserForm(forms.ModelForm):
     class Meta:
@@ -21,4 +21,13 @@ class dataForm(forms.ModelForm):
            'userID1':'出身国',
            'userID2':'性別',
            'winner':'0',
+           }
+
+class PlaierForm(forms.ModelForm):
+    class Meta:
+        model = Entry
+        fields = ('userID', 'username')
+        labels={
+           'userID':'ID',
+           'username':'名前',
            }

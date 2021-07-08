@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>entryform</title>
+</head>
+<body>
+<link href="{% static 'index.css' %}" rel="stylesheet">
+
+<div class='a1'>
+    <h1>this is {{endata}}</h1>
+</div>
+
+<div class ='b1'>
+    <p>{{player}}</p>
+</div>
+
+<form action="{% url 'entry_list' %}">
+    <input type="text" name="Text1"/>
+    <br>
+    <input type="text"  name="Text2"/>
+    <br>
+    <input type="submit" value="Button"/>
+</form>
+
+
+
+</body>
+</html>

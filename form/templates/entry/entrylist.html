@@ -1,0 +1,43 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+
+{% block app %}
+    <h1>エントリー者一覧</h1>
+<h2>{{msg}}</h2>
+    <table class="table table-striped table table-bordered ">
+        <thead>
+            <tr>
+                <th colspan="2">参加者:{{count}}名</th>
+            </tr>
+        </thead>
+        <tbody align="center">
+            <tr valign="middle">
+                <th>No.</th>
+                <th>ユーザーID</th>
+                <th>ユーザーネーム</th>
+            </tr>
+            <!-- count件(行)数分をループ -->
+            {% for plaier in entryinfo %}
+            <tr>
+                <!-- 4列分ユーザ情報を出力 -->
+                <th>{{forloop.counter}}</th>
+                <td>{{plaier.userID}}</td>
+                <td>{{plaier.username}}</td>
+            </tr>
+            {% endfor %}
+            <a href='{% url "entry_form" %}' class='btn btn-primary active'>エントリーページへ</a>
+        </tbody>
+    </table>
+<div>
+    <form action="{% url 'deentry_form' %}">
+        <button type="submit" class="btn btn-primary">エントリー取り消しページ</button>
+    </form>
+</div>
+<div>
+    <form action="{% url 'generate' %}">
+        <button type="submit" class="btn btn-secondary">エントリー締め切り</button>
+    </form>
+</div>
+
+
+{% endblock %}

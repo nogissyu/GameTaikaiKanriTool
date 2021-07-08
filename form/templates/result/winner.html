@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+
+{% block title%}RESULT{% endblock %}
+
+{% block content %}
+    <div>
+        <center>
+            <h1>WINNER</h1>
+            {% for name in dic %}
+                ID:{{name}}<br>
+            {% endfor %}
+        </center>
+    </div>
+{% endblock %}
