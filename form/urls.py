@@ -17,4 +17,5 @@ urlpatterns = [
     path('deentry/', views.deentry_form, name='deentry_form'),
     path('redeentry/', views.redeentry_form, name='redeentry_form'),
     path('table/', views.table, name='table'),
+    path('showlist/', views.showlist, name='showlist'),
 ]

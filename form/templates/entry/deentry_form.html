@@ -2,13 +2,8 @@
 {% load bootstrap4 %}
 
 {% block app %}
-<div class='a1'>
-    <h1>エントリー取り消しページ</h1>
-</div>
-
-<div class ='b1'>
-    <p>{{deentrytext}}</p>
-</div>
+<h1>エントリー取り消しページ</h1>
+<p style="color:#0000ff">{{deentrytext}}</p>
 
 <form action="{% url 'redeentry_form' %}" method="post" class="form">
     {% csrf_token %}
@@ -38,6 +33,4 @@
 
 
 </form>
-<a href='{% url "entry_form" %}' class='btn btn-secondary active'>エントリーページへ</a>
-<a href='{% url "entry_list" %}' class='btn btn-secondary active'>エントリー一覧へ</a>
 {% endblock %}

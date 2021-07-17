@@ -1,14 +1,26 @@
 {% extends './base.html' %}
-
-{% block title%}RESULT{% endblock %}
-
-{% block content %}
+{% load static %}
+{% block app %}
     <div>
-        <center>
-            <h1>WINNER</h1>
+
+            <h1><font color="orangered">Congratulations!!!!!!!</font></h1>
             {% for name in dic %}
-                ID:{{name}}<br>
+            {% if forloop.counter == 1 %}
+                <img src="{% static 'form/kin.png' %}" width="90" height="100">
+                <font size="7">{{ forloop.counter }}位:{{name}}<br>
+            {% elif forloop.counter == 2%}
+                <img src="{% static 'form/gin.png' %}" width="90" height="100">
+                <font size="6">{{ forloop.counter }}位:{{name}}<br>
+            {% elif forloop.counter == 3%}
+                <img src="{% static 'form/dou.png' %}" width="90" height="100">
+                <font size="5">{{ forloop.counter }}位:{{name}}<br>
+                {% else %}
+                <font class="offset-2" size="5">{{ forloop.counter }}位:{{name}}<br>
+
+
+            {% endif %}
             {% endfor %}
-        </center>
+
+
     </div>
 {% endblock %}

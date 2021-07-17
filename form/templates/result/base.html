@@ -1,20 +1,66 @@
-<!DOCTYPE html>
-<HEAD>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet"
-	  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	  crossorigin="anonymous">
-    
-</HEAD>
-<BODY>
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand">{% block title%}{% endblock %}</span>
-    </nav>
-    <main class="bd-content py-5 pl-3" role="main">
-        {% block content %}
-        {% endblock %}
-    </main>
+{% load static %}
+<!doctype html>
+<html lang="ja">
+    <head>
+        <!-- Bootstrap読込み -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</BODY>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- Bootstrap読込み -->
+
+        <!-- 表示全体を中央に揃える -->
+        <style>body { padding-bottom: 100px;}</style>
+
+        <!-- ナビゲーションバー -->
+    </head>
+
+    <!-- ボディー -->
+    <body style="background-color:#778899;">
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="height:80px;">
+        <a href="#" class="navbar-brand offset-2" style="font-size:30px;">ゲーム大会管理ツール</a>
+        <button class="navbar-toggler" type="button"
+            data-toggle="collapse"
+            data-target="#navmenu1"
+            aria-controls="navmenu1"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse offset-4" id="navmenu1">
+            <div class="navbar-nav">
+            <a class="nav-item nav-link" href='{% url "showlist" %}'>ホーム</a>
+            <a class="nav-item nav-link" href="#">お問い合わせ</a>
+            </div>
+        </div>
+    </nav>
+
+
+        <div class='wrapper'>
+            <div class="row">
+                <div class="" style="background-color:#fff; width:190px; font-size:30px; text-align: center;border-top-left-radius:8px; border-bottom-left-radius:8px; margin-left:40px">
+                    <div class="list-group-item border border-white" style="background-color:#fff;"><img src="{% static 'form/card.jpg' %}" width="150" height="100"></div>
+                    <div class="list-group list-group-flush">
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3 border-bottom" style="background-color:#2c3e50;color:#fff; width:185px;border-top-right-radius:80px; border-bottom-right-radius:10px;" href='{% url "syouhai" %}'>対戦カード一覧</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3 border-bottom" style="background-color:#2c3e50;color:#fff; width:185px;border-top-right-radius:80px; border-bottom-right-radius:10px;" href='{% url "table" %}'>対戦表</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3 border-bottom" style="background-color:#ff0000;color:#ffff00; width:150px; height:150px; font-size:40px;border-radius:5px; margin:15px; padding-top:25px;" href="{% url 'winner' %}">結果発表</a>
+                    </div>
+
+                </div>
+
+                <div class="col" style="background-color:#fff;padding-top:40px; padding-bottom:20px; border-top-right-radius:8px; border-bottom-right-radius:8px; margin-right:40px">
+                    <div class="" style="margin-left:10%; margin-right:25%;">
+                    {% block app %}
+                    {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="{% static 'form/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'form/js/bootstrap.bundle.min.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+
+</html>

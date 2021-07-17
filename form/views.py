@@ -115,6 +115,8 @@ def syouriData(request,Id):
 def win(request):
     battle_data = {}
     for doc in battledata.objects.all():#すべてのデータをdocへ
+        if doc.winner == "none":
+            return render(request, 'result/yet.html')
         if doc.userID1 not in battle_data:
             battle_data[doc.userID1] = 0
         if doc.userID2 not in battle_data:
@@ -124,8 +126,10 @@ def win(request):
     for doc in battledata.objects.all():
         battle_data[doc.winner] +=1
 
-    winnum = max(battle_data.values())
-    Winner = [k for k, v in battle_data.items() if v == winnum]
+    sortdata = sorted(battle_data.items(), key=lambda x: x[1], reverse=True)
+    Winner = []
+    for i in range(len(sortdata)):
+        Winner.append(sortdata[i][0])
 
     dic=[]
     for i in Winner:
@@ -160,6 +164,17 @@ def entry_form(request):
     }
 
     return render(request,'entry/entry_form.html',entry_text)
+
+
+def showlist(request):
+    plaierlist = Entry.objects.all()
+    context = {
+        'msg': '',
+        'entryinfo': plaierlist,
+        'count': plaierlist.count,
+    }
+
+    return render(request, 'entry/entrylist.html', context)
 
 
 def entry_list(request):
@@ -284,8 +299,12 @@ def table(request):
                         else :
                             contxt[doc.username].append("x")
                             break
-                    
-        
-                #contxt[doc.username].append(" ")
+
+    for doc in Entry.objects.all():
+        win_count = 0
+        for score in contxt[doc.username]:
+            if score == "o":
+                win_count = win_count + 1
+        contxt[doc.username].append(win_count)
     print({"contxt":contxt})
     return render(request, 'table/table.html', {"contxt":contxt})

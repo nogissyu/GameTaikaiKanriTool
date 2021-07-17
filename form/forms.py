@@ -28,6 +28,6 @@ class PlaierForm(forms.ModelForm):
         model = Entry
         fields = ('userID', 'username')
         labels={
-           'userID':'ID',
-           'username':'名前',
+           'userID':'ユーザーID',
+           'username':'ユーザーネーム',
            }

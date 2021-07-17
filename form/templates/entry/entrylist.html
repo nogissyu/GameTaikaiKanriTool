@@ -1,21 +1,22 @@
 {% extends './base.html' %}
 {% load bootstrap4 %}
+{% load static %}
 
 {% block app %}
-    <h1>エントリー者一覧</h1>
-<h2>{{msg}}</h2>
-    <table class="table table-striped table table-bordered ">
-        <thead>
-            <tr>
-                <th colspan="2">参加者:{{count}}名</th>
-            </tr>
-        </thead>
-        <tbody align="center">
+    <h1>エントリー者一覧
+
+    </h1>
+<h6 style="color:#0000ff">{{msg}}</h6>
+<p>参加者:{{count}}名</p>
+    <table class="table table-striped table table-bordered">
+        <thead  class="table-dark" align="center">
             <tr valign="middle">
                 <th>No.</th>
                 <th>ユーザーID</th>
                 <th>ユーザーネーム</th>
             </tr>
+        </thead>
+        <tbody align="center">
             <!-- count件(行)数分をループ -->
             {% for plaier in entryinfo %}
             <tr>
@@ -25,19 +26,7 @@
                 <td>{{plaier.username}}</td>
             </tr>
             {% endfor %}
-            <a href='{% url "entry_form" %}' class='btn btn-primary active'>エントリーページへ</a>
         </tbody>
     </table>
-<div>
-    <form action="{% url 'deentry_form' %}">
-        <button type="submit" class="btn btn-primary">エントリー取り消しページ</button>
-    </form>
-</div>
-<div>
-    <form action="{% url 'generate' %}">
-        <button type="submit" class="btn btn-secondary">エントリー締め切り</button>
-    </form>
-</div>
-
 
 {% endblock %}

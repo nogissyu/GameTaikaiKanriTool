@@ -2,13 +2,8 @@
 {% load bootstrap4 %}
 
 {% block app %}
-<div class='a1'>
-    <h1>エントリーページ</h1>
-</div>
-
-<div class ='b1'>
-    <p>{{entrytext}}</p>
-</div>
+<h1>エントリーページ</h1>
+<p style="color:#0000ff">{{entrytext}}</p>
 
 <form action="{% url 'entry_list' %}" method="post" class="form">
     {% csrf_token %}
@@ -38,5 +33,5 @@
 
 
 </form>
-<a href='{% url "entry_list" %}' class='btn btn-secondary active'>エントリー一覧へ</a>
+
 {% endblock %}
